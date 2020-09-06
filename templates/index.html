@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Resale</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style22.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="vehicle">
+	<h1>Vehicle Resale Value Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+	
+            <select name="abtest:" required="required">
+                <option value="">abtest</option>
+				<option value="1">test</option>
+                <option value="0">control</option><br>
+            </select>
+            <select name="vehicleType" required="required">
+			    <option value="">vehicleType</option>
+			     <option value="limousine">limousine</option>
+                <option value="combi">combi</option>
+				<option value="bus">bus</option>
+				<option value="suv">suv</option>
+				<option value="coupe">coupe</option>
+				<option value="limousine">limousine</option>
+				<option value="cabrio">cabrio</option>
+				<option value="kleinwagen">kleinwagen</option>
+            </select>
+            <input type="number" id="first" name="yearOfRegistration" placeholder="yearOfRegistration" >
+            <select name="gearbox"  required="required" >
+                <option value="">gearbox</option>
+				  <option value="0">automatik</option>
+                <option value="1">manuell</option><br>
+            </select>
+            <input type="number" name="powerPS" placeholder="powerPS">
+             <select name="model:" required="required">
+			    <option value="">model</option>
+                <option value="116">golf</option>
+                <option value="117">grand</option>
+				<option value="101">fabia</option>
+				<option value="11">3er</option>
+				<option value="244">zafira</option>
+				<option value="78">colt</option>
+				<option value="106">fortow</option>
+				<option value="219">transporter</option><br>
+            </select>
+            <input type="number" name="kilometer" required="required" placeholder="kilometer">
+			
+           <br><br> <select name="fuelType" required="required" >
+                <option value="">fuelType</option>
+				<option value="3">diesel</option>
+				<option value="1">benzin</option>
+            </select>
+            
+            <select name="brand:" required="required">
+			    <option value="">brand</option>
+                <option value="38">volkswagen</option>
+                <option value="32">smart</option>
+				<option value="31">skoda</option>
+				<option value="14">jeep</option>
+				<option value="2">bmw</option>
+				<option value="22">mitsubishi</option><br>
+            </select>
+           
+			 
+        <br><br><button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form><br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
